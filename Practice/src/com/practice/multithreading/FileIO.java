@@ -11,7 +11,7 @@ public class FileIO {
 	BufferedReader bufferedReader;
 	String consoleString = "";
 
-	boolean writeFlag = true;
+	boolean writeFlag = false;
 
 	public FileIO() {
 		bufferedReader = new BufferedReader(new InputStreamReader(System.in));
