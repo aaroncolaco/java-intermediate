@@ -12,25 +12,26 @@ public class Storage {
 	
 	
 	/*
-	 * if numberSetFlag==true:
-	 * 	print, set to false, notify 
-	 * else: wait
+	 * if numberSetFlag==false:
+	 * 	wait
+	 * else:
+	 * 	set to false, notify, return
 	 */
 	public synchronized int getNumber() {
 
-		if (numberSetFlag) {
-			numberSetFlag = false;
-			notify();
+		if (!numberSetFlag) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		/* ******
 		 * can be put inside an else block without any problem
 		 */
-		try {
-			wait();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		numberSetFlag = false;
+		notify();
 		return this.number;
 	}
 
