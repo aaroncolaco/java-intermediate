@@ -61,10 +61,9 @@ public class Driver {
 	}
 
 	
-	/* ******** TODO ********** */
 	// using external comparator class
 	public void sortBylanguageAndReleaseDate(List<Movie> movieList) {
-		Collections.sort(movieList, new Movie());
+		Collections.sort(movieList, new LangDateSorter());
 	}
 
 	
